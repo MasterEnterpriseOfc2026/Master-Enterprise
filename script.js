@@ -88,10 +88,84 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     const cy = rect.height / 2;
     const rotX = ((y - cy) / cy) * -4;
     const rotY = ((x - cx) / cx) * 4;
-    card.style.transform = `translateY(-6px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    // Check if it's a portfolio card to avoid conflict with hover translateY
+    const isPortfolio = card.classList.contains('portfolio-card');
+    const baseY = isPortfolio ? '0' : '-6px';
+    card.style.transform = `translateY(${baseY}) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
   });
   card.addEventListener('mouseleave', () => {
     card.style.transform = '';
+  });
+});
+
+// Lightbox functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxImageWrap = document.getElementById('lightbox-image-wrap');
+const lightboxTitle = document.getElementById('lightbox-title');
+const lightboxClose = document.getElementById('lightbox-close');
+const lightboxTabs = document.querySelectorAll('.lightbox-tab');
+
+let currentDesktop = '';
+let currentMobile = '';
+let currentView = 'desktop';
+
+function openLightbox(card) {
+  currentDesktop = card.dataset.desktop;
+  currentMobile = card.dataset.mobile;
+  const title = card.querySelector('h4').textContent;
+  lightboxTitle.textContent = title;
+  
+  currentView = 'desktop';
+  updateLightboxView();
+  
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function updateLightboxView() {
+  const imgSrc = currentView === 'desktop' ? currentDesktop : currentMobile;
+  lightboxImage.src = imgSrc;
+  
+  // Update tab active state
+  lightboxTabs.forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.view === currentView);
+  });
+  
+  // Update image wrap class for mobile styling
+  lightboxImageWrap.classList.toggle('mobile', currentView === 'mobile');
+}
+
+// Open lightbox on portfolio card click
+document.querySelectorAll('.portfolio-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    // Don't open lightbox if clicking the visit link
+    if (e.target.classList.contains('visit-link')) return;
+    openLightbox(card);
+  });
+});
+
+// Close lightbox
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Lightbox tabs
+lightboxTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    currentView = tab.dataset.view;
+    updateLightboxView();
   });
 });
 

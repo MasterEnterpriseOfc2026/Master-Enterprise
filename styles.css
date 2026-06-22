@@ -855,7 +855,7 @@ footer .legal {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 28px;
   align-items: start;
 }
@@ -872,8 +872,137 @@ footer .legal {
   cursor: pointer;
 }
 
-.portfolio-card:nth-child(2) {
-  margin-top: 60px;
+.visit-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--accent-2);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.visit-link:hover {
+  color: var(--accent-soft);
+  transform: translateX(4px);
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 9, 0.96);
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 1200px;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.lightbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lightbox-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.lightbox-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.lightbox-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-warm);
+}
+
+.lightbox-tab {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.lightbox-tab.active {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: #fff;
+}
+
+.lightbox-tab:hover:not(.active) {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.lightbox-image-wrap {
+  max-height: 70vh;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #000;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lightbox-image-wrap.mobile {
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0c10, #14101f);
+}
+
+.lightbox-image-wrap.mobile .lightbox-image {
+  max-width: 360px;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8);
 }
 
 .portfolio-card::before {
@@ -1023,11 +1152,11 @@ footer .legal {
   .brand-grid { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: 1fr; }
-  .portfolio-card:nth-child(2) { margin-top: 0; }
   .cta-band { flex-direction: column; align-items: flex-start; padding: 44px 32px; }
   .footer-content { flex-direction: column; }
   .footer-links { gap: 40px; flex-wrap: wrap; }
   section { padding: 80px 0; }
+  .lightbox { padding: 20px; }
 }
 
 @media (max-width: 600px) {
@@ -1042,6 +1171,11 @@ footer .legal {
   .brand-card { padding: 28px; }
   .footer-links { flex-direction: column; gap: 32px; }
   footer .legal { flex-direction: column; gap: 8px; text-align: center; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .lightbox-tabs { gap: 4px; }
+  .lightbox-tab { padding: 8px 14px; font-size: 0.85rem; }
+  .lightbox-header { padding: 16px 20px; }
+  .lightbox-tabs { padding: 12px 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

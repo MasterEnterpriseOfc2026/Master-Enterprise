@@ -137,34 +137,84 @@
         <div class="portfolio-grid reveal reveal-stagger">
 
           <!-- Card 1: Beatriz Medeiros Blog -->
-          <a class="portfolio-card" href="https://masterenterpriseofc2026.github.io/Beatriz-Medeiros-Blog/" target="_blank" rel="noopener noreferrer" data-tilt>
+          <div class="portfolio-card" data-tilt data-desktop="images/sites_produzidos/bia.PNG" data-mobile="images/sites_produzidos/beatriz-mobile.PNG">
             <div class="portfolio-img-wrap">
               <img src="images/sites_produzidos/bia.PNG" alt="Captura de tela do site Beatriz Medeiros Blog" loading="lazy">
               <div class="portfolio-overlay">
-                <span class="portfolio-visit-btn">Visitar site ↗</span>
+                <span class="portfolio-visit-btn">Ver screenshots ↗</span>
               </div>
             </div>
             <div class="portfolio-info">
               <span class="tag">Blog &amp; Conteúdo</span>
               <h4>Beatriz Medeiros Blog</h4>
               <p>Site pessoal com design elegante, focado na criação e compartilhamento de conteúdo autoral com experiência de leitura fluida.</p>
+              <a href="https://masterenterpriseofc2026.github.io/Beatriz-Medeiros-Blog/" target="_blank" rel="noopener noreferrer" class="visit-link">Acessar site →</a>
             </div>
-          </a>
+          </div>
 
           <!-- Card 2: Designer de Sobrancelha -->
-          <a class="portfolio-card" href="https://masterenterpriseofc2026.github.io/Designer-de-Sobrancelha-Jaquelma-Santos-/" target="_blank" rel="noopener noreferrer" data-tilt>
+          <div class="portfolio-card" data-tilt data-desktop="images/sites_produzidos/designer.PNG" data-mobile="images/sites_produzidos/designer-mobile.PNG">
             <div class="portfolio-img-wrap">
               <img src="images/sites_produzidos/designer.PNG" alt="Captura de tela do site Designer de Sobrancelha Jaquelma Santos" loading="lazy">
               <div class="portfolio-overlay">
-                <span class="portfolio-visit-btn">Visitar site ↗</span>
+                <span class="portfolio-visit-btn">Ver screenshots ↗</span>
               </div>
             </div>
             <div class="portfolio-info">
               <span class="tag">Beleza &amp; Serviços</span>
               <h4>Jaquelma Santos</h4>
               <p>Página profissional para designer de sobrancelhas, apresentando serviços, portfólio e facilitando o contato com clientes.</p>
+              <a href="https://masterenterpriseofc2026.github.io/Designer-de-Sobrancelha-Jaquelma-Santos-/" target="_blank" rel="noopener noreferrer" class="visit-link">Acessar site →</a>
             </div>
-          </a>
+          </div>
+
+          <!-- Card 3: MasterPrompts -->
+          <div class="portfolio-card" data-tilt data-desktop="images/sites_produzidos/MasterPrompts.PNG" data-mobile="images/sites_produzidos/MasterPrompts-mobile.PNG">
+            <div class="portfolio-img-wrap">
+              <img src="images/sites_produzidos/MasterPrompts.PNG" alt="Captura de tela do site MasterPrompts" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="portfolio-visit-btn">Ver screenshots ↗</span>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <span class="tag">Ferramentas de IA</span>
+              <h4>MasterPrompts</h4>
+              <p>Plataforma para criação e compartilhamento de prompts de alta qualidade, otimizados para diferentes modelos de IA.</p>
+              <a href="https://masterenterpriseofc2026.github.io/Master-Prompts/" target="_blank" rel="noopener noreferrer" class="visit-link">Acessar site →</a>
+            </div>
+          </div>
+
+          <!-- Card 4: MasterScripts -->
+          <div class="portfolio-card" data-tilt data-desktop="images/sites_produzidos/MasterScripts.PNG" data-mobile="images/sites_produzidos/MasterScripts-mobile.PNG">
+            <div class="portfolio-img-wrap">
+              <img src="images/sites_produzidos/MasterScripts.PNG" alt="Captura de tela do site MasterScripts" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="portfolio-visit-btn">Ver screenshots ↗</span>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <span class="tag">Scripts & Automação</span>
+              <h4>MasterScripts</h4>
+              <p>Repositório de scripts úteis para automação de tarefas, desenvolvimento web e produtividade.</p>
+              <a href="https://masterenterpriseofc2026.github.io/Master-Scripts/" target="_blank" rel="noopener noreferrer" class="visit-link">Acessar site →</a>
+            </div>
+          </div>
+
+          <!-- Card 5: MasterSketch -->
+          <div class="portfolio-card" data-tilt data-desktop="images/sites_produzidos/MasterSketch.PNG" data-mobile="images/sites_produzidos/MasterSketch-mobile.PNG">
+            <div class="portfolio-img-wrap">
+              <img src="images/sites_produzidos/MasterSketch.PNG" alt="Captura de tela do site MasterSketch" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="portfolio-visit-btn">Ver screenshots ↗</span>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <span class="tag">Design & Protótipos</span>
+              <h4>MasterSketch</h4>
+              <p>Plataforma para criação de protótipos e wireframes rápidos, com foco em experiência do usuário.</p>
+              <a href="https://masterenterpriseofc2026.github.io/Master-Sketch/" target="_blank" rel="noopener noreferrer" class="visit-link">Acessar site →</a>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -272,6 +322,23 @@
   </footer>
 
   <button class="to-top" id="toTop" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <div class="lightbox-header">
+        <div class="lightbox-title" id="lightbox-title">Projeto</div>
+        <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">×</button>
+      </div>
+      <div class="lightbox-tabs">
+        <button class="lightbox-tab active" data-view="desktop">Desktop</button>
+        <button class="lightbox-tab" data-view="mobile">Mobile</button>
+      </div>
+      <div class="lightbox-image-wrap" id="lightbox-image-wrap">
+        <img class="lightbox-image" id="lightbox-image" src="" alt="">
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
